@@ -1,0 +1,10 @@
+<!doctype html>
+<title>Licencias</title>
+<h1>Licencias</h1>
+<ul>
+{% for lic in licencias %}
+  <li>{{ lic.ejecutivo.nombre }}: {{ lic.fecha_inicio }} - {{ lic.fecha_termino or 'N/A' }}</li>
+{% else %}
+  <li>No hay licencias registradas</li>
+{% endfor %}
+</ul>

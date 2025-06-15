@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Licencia{% endblock %}
+{% block content %}
+<h1>{{ form_title }}</h1>
+<form method="post">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">
+    {{ form.ejecutivo_id.label(class="form-label") }}
+    {{ form.ejecutivo_id(class="form-select") }}
+  </div>
+  <div class="mb-3">
+    {{ form.fecha_inicio.label(class="form-label") }}
+    {{ form.fecha_inicio(class="form-control", type="date") }}
+  </div>
+  <div class="mb-3">
+    {{ form.fecha_termino.label(class="form-label") }}
+    {{ form.fecha_termino(class="form-control", type="date") }}
+  </div>
+  <div class="form-check mb-3">
+    {{ form.extendida(class="form-check-input") }}
+    {{ form.extendida.label(class="form-check-label") }}
+  </div>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}

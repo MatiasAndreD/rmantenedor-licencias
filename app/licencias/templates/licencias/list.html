@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Licencias{% endblock %}
+{% block content %}
+<h1>Licencias</h1>
+<a class="btn btn-success mb-3" href="{{ url_for('licencias.crear') }}">Nueva Licencia</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Ejecutivo</th>
+      <th>Fecha inicio</th>
+      <th>Fecha término</th>
+      <th>Estado</th>
+      <th>Sucursal</th>
+      <th>Modelo</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for lic in licencias %}
+    <tr>
+      <td>{{ lic.ejecutivo.nombre }}</td>
+      <td>{{ lic.fecha_inicio }}</td>
+      <td>{{ lic.fecha_termino or 'N/A' }}</td>
+      <td>{{ 'Extendida' if lic.extendida else 'Activa' if not lic.fecha_termino else 'Finalizada' }}</td>
+      <td>{{ lic.ejecutivo.sucursal }}</td>
+      <td>{{ lic.ejecutivo.modelo_atencion }}</td>
+      <td>
+        <a class="btn btn-sm btn-primary" href="{{ url_for('licencias.editar', id=lic.id) }}">Editar</a>
+        <a class="btn btn-sm btn-danger" href="{{ url_for('licencias.eliminar', id=lic.id) }}">Borrar</a>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="7">No hay licencias</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar Licencia{% endblock %}
+{% block content %}
+<h1>Confirmar eliminación</h1>
+<p>¿Desea eliminar la licencia de {{ licencia.ejecutivo.nombre }}?</p>
+<form method="post">
+  {{ form.hidden_tag() }}
+  <button type="submit" class="btn btn-danger">Eliminar</button>
+  <a href="{{ url_for('licencias.listar') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
